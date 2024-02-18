@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Login and Registration</title>
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+</head>
+<body>
+    <h1>User Login</h1>
+    <div id="error-message" style="color: red;"></div>
+    <form action="/login" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+        <button type="submit" class="submit">Login</button>
+        <button type="button" class="register"onclick="redirectToRegistration()">Register here</button>
+    </form>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+        if (error) {
+            document.getElementById('error-message').textContent = error;
+        }
+        function redirectToRegistration() {
+            window.location.href = '/register';
+        }
+    </script>
+</body>
+</html>
